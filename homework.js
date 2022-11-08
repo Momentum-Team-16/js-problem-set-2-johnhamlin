@@ -56,10 +56,23 @@ console.log(minimum([2, 1, 3]));
 // Note 2: Selection sort can be implemented using one array. Read the explanation at
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
-const selectionSort 
+const selectionSort = arrOrig => {
+  const arr = [...arrOrig];
+  const arrSorted = [];
+  while (arr.length) {
+    const min = minimum(arr);
+    arrSorted.push(min);
+    const index = arr.indexOf(min);
+    arr.splice(index, 1);
+  }
+  return arrSorted;
+};
 
 // 7. Create a function called `textList` that takes an array and joins its elements
 // into a string separated by commas.
 //
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
+
+// Note: Slice the last character off to remove the last comma
+const textList = arr => arr.reduce((str, e) => str + e + ',', '').slice(0, -1);
